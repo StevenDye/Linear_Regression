@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import random
 from matplotlib import style
 from sklearn.linear_model import LinearRegression
@@ -105,7 +106,7 @@ print()
 plt.scatter(xs,ys)
 
 #plot calculated linear regrsession line
-plt.plot(xs,regression_line, linewidth=5.0)
+plt.plot(xs,regression_line, color='black', linewidth=5.0)
 
 # Plot Linear Regression Model from sklearn
 plt.plot(xs, Y_pred, color='orange', linewidth=2.0)
@@ -113,5 +114,9 @@ plt.plot(xs, Y_pred, color='orange', linewidth=2.0)
 # Plot prediction points
 plt.scatter(predict_x,predict_y, s=200, color='g')
 plt.scatter(predict_x,linear_regressor.predict(predict_x), s=100, color='r')
+
+model_patch = mpatches.Patch(color='black',label='Model')
+sklearn_patch = mpatches.Patch(color='orange',label='sklearn')
+plt.legend(handles=[model_patch, sklearn_patch])
 
 plt.show()
